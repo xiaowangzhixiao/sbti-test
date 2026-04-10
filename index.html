@@ -16,11 +16,7 @@
             --text-muted: #a0a0a0;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Noto Sans SC', sans-serif;
@@ -30,69 +26,14 @@
             overflow-x: hidden;
         }
         
-        /* 背景动画 */
         .bg-animation {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: -1;
             background: 
                 radial-gradient(ellipse at 20% 80%, rgba(233, 69, 96, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(83, 52, 131, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(15, 52, 96, 0.1) 0%, transparent 70%);
-        }
-        
-        .floating-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        
-        .shape {
-            position: absolute;
-            opacity: 0.1;
-            animation: float 20s infinite ease-in-out;
-        }
-        
-        .shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            background: var(--accent-pink);
-            border-radius: 50%;
-            left: 10%;
-            top: 20%;
-            animation-delay: 0s;
-        }
-        
-        .shape:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            background: var(--accent-purple);
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-            right: 15%;
-            top: 30%;
-            animation-delay: -5s;
-        }
-        
-        .shape:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            background: var(--accent-cyan);
-            left: 70%;
-            bottom: 20%;
-            animation-delay: -10s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(180deg); }
+                radial-gradient(ellipse at 80% 20%, rgba(83, 52, 131, 0.15) 0%, transparent 50%);
         }
         
         .container {
@@ -105,21 +46,11 @@
             justify-content: center;
         }
         
-        /* 首页 */
-        .landing {
-            text-align: center;
-            animation: fadeInUp 0.8s ease-out;
-        }
+        .landing { text-align: center; animation: fadeInUp 0.8s ease-out; }
         
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .logo {
@@ -130,25 +61,12 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 10px;
-            letter-spacing: -2px;
         }
         
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
+        .subtitle { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 30px; }
         
-        .tagline {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 40px;
-            line-height: 1.6;
-        }
-        
-        .tagline span {
-            color: var(--accent-pink);
-        }
+        .tagline { font-size: 1.5rem; font-weight: 700; margin-bottom: 40px; line-height: 1.6; }
+        .tagline span { color: var(--accent-pink); }
         
         .features {
             display: flex;
@@ -165,17 +83,8 @@
             border: 1px solid rgba(233, 69, 96, 0.2);
         }
         
-        .feature-number {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--accent-pink);
-        }
-        
-        .feature-text {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-top: 5px;
-        }
+        .feature-number { font-size: 2rem; font-weight: 900; color: var(--accent-pink); }
+        .feature-text { font-size: 0.9rem; color: var(--text-muted); margin-top: 5px; }
         
         .start-btn {
             background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
@@ -204,16 +113,8 @@
             margin-right: auto;
         }
         
-        /* 测试页面 */
-        .quiz-container {
-            display: none;
-            animation: fadeIn 0.5s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        .quiz-container { display: none; animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
         .progress-bar {
             background: var(--bg-card);
@@ -250,11 +151,7 @@
             justify-content: center;
         }
         
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+        .options { display: flex; flex-direction: column; gap: 15px; }
         
         .option {
             background: var(--bg-card);
@@ -272,22 +169,9 @@
             transform: translateX(10px);
         }
         
-        .option.selected {
-            background: linear-gradient(135deg, rgba(233, 69, 96, 0.2), rgba(83, 52, 131, 0.2));
-            border-color: var(--accent-pink);
-        }
+        .result-container { display: none; text-align: center; animation: fadeInUp 0.8s ease-out; }
         
-        /* 结果页面 */
-        .result-container {
-            display: none;
-            text-align: center;
-            animation: fadeInUp 0.8s ease-out;
-        }
-        
-        .result-emoji {
-            font-size: 6rem;
-            margin-bottom: 20px;
-        }
+        .result-emoji { font-size: 6rem; margin-bottom: 20px; }
         
         .result-type {
             font-size: 3rem;
@@ -299,11 +183,7 @@
             margin-bottom: 10px;
         }
         
-        .result-title {
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
+        .result-title { font-size: 1.5rem; color: var(--text-muted); margin-bottom: 30px; }
         
         .result-card {
             background: var(--bg-card);
@@ -313,20 +193,9 @@
             border: 1px solid rgba(233, 69, 96, 0.2);
         }
         
-        .result-description {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
+        .result-description { font-size: 1.2rem; line-height: 1.8; margin-bottom: 30px; }
         
-        .traits {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-        
+        .traits { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 30px; }
         .trait {
             background: linear-gradient(135deg, rgba(233, 69, 96, 0.2), rgba(83, 52, 131, 0.2));
             padding: 8px 20px;
@@ -334,29 +203,10 @@
             font-size: 0.9rem;
         }
         
-        .dimensions {
-            text-align: left;
-            margin-top: 30px;
-        }
-        
-        .dimension {
-            margin-bottom: 20px;
-        }
-        
-        .dimension-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-        }
-        
-        .dimension-bar {
-            background: var(--bg-dark);
-            height: 10px;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
+        .dimensions { text-align: left; margin-top: 30px; }
+        .dimension { margin-bottom: 20px; }
+        .dimension-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.9rem; }
+        .dimension-bar { background: var(--bg-dark); height: 10px; border-radius: 5px; overflow: hidden; }
         .dimension-fill {
             height: 100%;
             border-radius: 5px;
@@ -377,9 +227,7 @@
             margin-right: 15px;
         }
         
-        .share-btn:hover {
-            background: var(--accent-pink);
-        }
+        .share-btn:hover { background: var(--accent-pink); }
         
         .restart-btn {
             background: transparent;
@@ -393,16 +241,11 @@
             transition: all 0.3s ease;
         }
         
-        .restart-btn:hover {
-            border-color: var(--text-light);
-            color: var(--text-light);
-        }
+        .restart-btn:hover { border-color: var(--text-light); color: var(--text-light); }
         
         @media (max-width: 600px) {
             .logo { font-size: 3.5rem; }
             .tagline { font-size: 1.2rem; }
-            .features { gap: 15px; }
-            .feature { padding: 15px 20px; }
             .question { font-size: 1.2rem; }
             .result-type { font-size: 2rem; }
         }
@@ -410,14 +253,7 @@
 </head>
 <body>
     <div class="bg-animation"></div>
-    <div class="floating-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-    
     <div class="container">
-        <!-- 首页 -->
         <div class="landing" id="landing">
             <div class="logo">SBTI</div>
             <div class="subtitle">Silly Big Personality Test</div>
@@ -426,45 +262,27 @@
                 <span>来看看你的真实人格底色</span>
             </div>
             <div class="features">
-                <div class="feature">
-                    <div class="feature-number">31</div>
-                    <div class="feature-text">道题目</div>
-                </div>
-                <div class="feature">
-                    <div class="feature-number">3-5</div>
-                    <div class="feature-text">分钟完成</div>
-                </div>
-                <div class="feature">
-                    <div class="feature-number">∞</div>
-                    <div class="feature-text">种可能</div>
-                </div>
+                <div class="feature"><div class="feature-number">31</div><div class="feature-text">道题目</div></div>
+                <div class="feature"><div class="feature-number">3-5</div><div class="feature-text">分钟完成</div></div>
+                <div class="feature"><div class="feature-number">12</div><div class="feature-text">种人格</div></div>
             </div>
             <button class="start-btn" onclick="startQuiz()">开始测试</button>
-            <div class="disclaimer">
-                本测试仅供娱乐，结果包含戏谑自嘲成分，请勿当真。<br>
-                创作者初衷：劝朋友戒酒 😂
-            </div>
+            <div class="disclaimer">本测试仅供娱乐，结果包含戏谑自嘲成分，请勿当真。<br>创作者初衷：劝朋友戒酒 😂</div>
         </div>
         
-        <!-- 测试页面 -->
         <div class="quiz-container" id="quiz">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
-            </div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 0%"></div></div>
             <div class="question-counter" id="questionCounter">第 1 / 31 题</div>
             <div class="question" id="questionText">加载中...</div>
             <div class="options" id="optionsContainer"></div>
         </div>
         
-        <!-- 结果页面 -->
         <div class="result-container" id="result">
             <div class="result-emoji" id="resultEmoji">🎭</div>
             <div class="result-type" id="resultType">装死者</div>
             <div class="result-title" id="resultTitle">ZZZZ</div>
             <div class="result-card">
-                <div class="result-description" id="resultDescription">
-                    恭喜您，您测出了全中国最稀有的装死人格。
-                </div>
+                <div class="result-description" id="resultDescription">描述</div>
                 <div class="traits" id="traits"></div>
                 <div class="dimensions" id="dimensions"></div>
             </div>
@@ -474,7 +292,6 @@
     </div>
     
     <script>
-        // 31道题目
         const questions = [
             { q: "恋爱后，对象非常黏人，你作何感想？", options: ["窒息，想逃", "有点烦但忍了", "其实挺享受", "无所谓"] },
             { q: "朋友带了ta的朋友一起来玩，你最可能的状态是？", options: ["尴尬，想回家", "礼貌性社交", "很快融入", "我就是气氛组"] },
@@ -492,7 +309,7 @@
             { q: "我很容易对新鲜事物产生兴趣。", options: ["非常容易", "比较容易", "不太容易", "完全不容易"] },
             { q: "面对批评，我会？", options: ["虚心接受", "表面接受内心不服", "直接反驳", "完全不在乎"] },
             { q: "我的社交能量通常能维持多久？", options: ["几分钟", "一小时", "半天", "全天候"] },
-            { q: "我经常会回想过去的事情。", options: ["总是回想", "经常回想", "偶尔回想", "从不回想"] },
+            { q: "我经常回想过去的事情。", options: ["总是回想", "经常回想", "偶尔回想", "从不回想"] },
             { q: "对于规则，我的态度是？", options: ["严格遵守", "灵活处理", "能破就破", "完全无视"] },
             { q: "我很容易对他人产生好感。", options: ["非常容易", "比较容易", "不太容易", "完全不容易"] },
             { q: "面对选择，我通常会？", options: ["纠结很久", "凭直觉", "问别人", "随便选"] },
@@ -500,7 +317,7 @@
             { q: "我喜欢做计划还是随性而为？", options: ["必须计划", "大致计划", "随性而为", "完全随机"] },
             { q: "我很容易原谅别人的过错。", options: ["非常容易", "比较容易", "不太容易", "完全不容易"] },
             { q: "面对压力，我会？", options: ["崩溃", "硬扛", "逃避", "转化动力"] },
-            { q: "我经常说\"随便\"、\"都行\"。", options: ["总是说", "经常说", "偶尔说", "从不说"] },
+            { q: "我经常说"随便"、"都行"。", options: ["总是说", "经常说", "偶尔说", "从不说"] },
             { q: "我对自己未来的期望是？", options: ["大富大贵", "安稳度日", "随心所欲", "没有期望"] },
             { q: "我很容易受到他人情绪的影响。", options: ["非常容易", "比较容易", "不太容易", "完全不容易"] },
             { q: "面对失败，我会？", options: ["自责很久", "总结经验", "无所谓", "归咎于外"] },
@@ -509,20 +326,47 @@
             { q: "如果人生可以重来，你会？", options: ["好好学习", "早点搞钱", "大胆恋爱", "还是现在这样"] }
         ];
         
-        // 结果类型
+        // 每个类型对应特定题目和答案倾向
+        const typeMapping = {
+            // 装死者：逃避倾向强 + 低行动力
+            ZZZZ: { questions: [9, 20], answers: [0, 0], weights: [3, 3] },
+            // 吗喽：低欲望 + 随性
+            MALO: { questions: [6, 21, 24], answers: [0, 2, 0], weights: [2, 2, 2] },
+            // 死者：精神状态消极 + 低行动力
+            DEAD: { questions: [8, 28], answers: [0, 0], weights: [3, 3] },
+            // 愤世者：不满倾向 + 反驳
+            SHIT: { questions: [7, 14], answers: [1, 2], weights: [3, 3] },
+            // 酒鬼：社交外向 + 寻求刺激
+            DRUNK: { questions: [6, 16], answers: [1, 0], weights: [3, 2] },
+            // 尤物：自信外向 + 高社交
+            SEXY: { questions: [10, 16, 18], answers: [3, 3, 0], weights: [3, 2, 2] },
+            // 送钱者：付出型 + 易原谅
+            ATM: { questions: [11, 22], answers: [0, 0], weights: [3, 3] },
+            // 傻乐者：乐观 + 随性
+            FOOL: { questions: [24, 27], answers: [3, 2], weights: [3, 3] },
+            // 恋爱脑：感情依赖 + 高孤独感
+            LOVE: { questions: [5, 20, 29], answers: [0, 0, 0], weights: [2, 2, 3] },
+            // 卷王：高行动力 + 计划性
+            WORK: { questions: [6, 12, 21], answers: [2, 0, 0], weights: [3, 3, 2] },
+            // 小丑：自我否定 + 付出型
+            JOKER: { questions: [11, 28, 29], answers: [0, 0, 1], weights: [2, 2, 3] },
+            // 无所谓人：佛系 + 情绪稳定
+            BOSS: { questions: [15, 21, 24], answers: [0, 2, 0], weights: [2, 2, 2] }
+        };
+        
         const results = {
-            ZZZZ: { name: "装死者", emoji: "💤", title: "装死者", desc: "恭喜您，您测出了全中国最稀有的装死人格。是的，直到\"死线\"这个唯一的、最高权限的指令出现，您就真正爆发了，不鸣则已，一鸣惊人。", traits: ["拖延症晚期", "死线战士", "潜力股", "爆发型选手"], dimensions: { "行动力": 20, "社交欲": 30, "情绪稳定": 60, "自我认知": 70 } },
-            MALO: { name: "吗喽", emoji: "🐒", title: "吗喽", desc: "一只标准的职场吗喽，拒绝内卷，只想躺平。每天问自己：这个班是非上不可吗？", traits: ["打工人", "拒绝内卷", "生存主义者", "佛系"], dimensions: { "行动力": 40, "社交欲": 50, "情绪稳定": 80, "自我认知": 60 } },
-            DEAD: { name: "死者", emoji: "💀", title: "死者", desc: "精神已死，佛系躺平。表面上还活着，实际上已经走了有一会儿了。", traits: ["精神已死", "佛系", "看透一切", "无所谓"], dimensions: { "行动力": 10, "社交欲": 20, "情绪稳定": 90, "自我认知": 80 } },
-            SHIT: { name: "愤世者", emoji: "🤬", title: "愤世者", desc: "看什么都不顺眼，这个世界配不上我的才华。吐槽是日常，愤怒是本能。", traits: ["愤世嫉俗", "吐槽达人", "高标准", "真性情"], dimensions: { "行动力": 50, "社交欲": 40, "情绪稳定": 30, "自我认知": 75 } },
-            DRUNK: { name: "酒鬼", emoji: "🍺", title: "酒鬼", desc: "没有什么是一顿酒解决不了的，如果有，那就两顿。酒是粮食精，越喝越年轻。", traits: ["社交达人", "借酒消愁", "气氛组", "及时行乐"], dimensions: { "行动力": 60, "社交欲": 85, "情绪稳定": 40, "自我认知": 50 } },
-            SEXY: { name: "尤物", emoji: "💋", title: "尤物", desc: "天生丽质难自弃，走到哪都是焦点。自信是你的代名词，魅力是你的超能力。", traits: ["自信", "魅力四射", "社交牛逼", "爱自己"], dimensions: { "行动力": 70, "社交欲": 90, "情绪稳定": 65, "自我认知": 85 } },
-            ATM: { name: "送钱者", emoji: "💸", title: "送钱者", desc: "总是为他人付出，钱包空空如也。朋友眼中的\"提款机\"，恋爱中的\"大冤种\"。", traits: ["付出型", "重情义", "容易被骗", "心软"], dimensions: { "行动力": 55, "社交欲": 75, "情绪稳定": 45, "自我认知": 40 } },
-            FOOL: { name: "傻乐者", emoji: "🤪", title: "傻乐者", desc: "傻人有傻福，快乐就完事了。没心没肺，活着不累。", traits: ["乐观", "没心没肺", "简单快乐", "正能量"], dimensions: { "行动力": 65, "社交欲": 70, "情绪稳定": 85, "自我认知": 55 } },
-            LOVE: { name: "恋爱脑", emoji: "🥰", title: "恋爱脑", desc: "爱情至上，为爱痴狂。一谈恋爱就降智，分手就世界末日。", traits: ["浪漫", "专一", "粘人", "情绪化"], dimensions: { "行动力": 50, "社交欲": 80, "情绪稳定": 25, "自我认知": 45 } },
-            WORK: { name: "卷王", emoji: "📈", title: "卷王", desc: "内卷之王，奋斗逼本逼。别人休息你加班，别人玩乐你学习。", traits: ["上进", "自律", "工作狂", "目标明确"], dimensions: { "行动力": 95, "社交欲": 40, "情绪稳定": 70, "自我认知": 80 } },
-            JOKER: { name: "小丑", emoji: "🤡", title: "小丑", desc: "舔狗舔到最后一无所有，joker 竟是我自己。深情总是被辜负。", traits: ["深情", "执着", "自我感动", "容易受伤"], dimensions: { "行动力": 45, "社交欲": 60, "情绪稳定": 35, "自我认知": 50 } },
-            BOSS: { name: "无所谓人", emoji: "😐", title: "无所谓人", desc: "随便、都行、无所谓。人生座右铭：关我屁事，关你屁事。", traits: ["随和", "不计较", "低欲望", "佛系"], dimensions: { "行动力": 30, "社交欲": 35, "情绪稳定": 95, "自我认知": 60 } }
+            ZZZZ: { name: "装死者", emoji: "💤", desc: "恭喜您，您测出了全中国最稀有的装死人格。直到死线出现，您才真正爆发，一鸣惊人。", traits: ["拖延症晚期", "死线战士", "潜力股", "爆发型选手"], dimensions: { "行动力": 20, "社交能量": 30, "情绪稳定": 60, "自我认同": 70 } },
+            MALO: { name: "吗喽", emoji: "🐒", desc: "一只标准的职场吗喽，拒绝内卷，只想躺平。每天问自己：这个班是非上不可吗？", traits: ["打工人", "拒绝内卷", "生存主义者", "佛系"], dimensions: { "行动力": 40, "社交能量": 50, "情绪稳定": 80, "自我认同": 60 } },
+            DEAD: { name: "死者", emoji: "💀", desc: "精神已死，佛系躺平。表面上还活着，实际上已经走了有一会儿了。", traits: ["精神已死", "佛系", "看透一切", "无所谓"], dimensions: { "行动力": 10, "社交能量": 20, "情绪稳定": 90, "自我认同": 80 } },
+            SHIT: { name: "愤世者", emoji: "🤬", desc: "看什么都不顺眼，这个世界配不上我的才华。吐槽是日常，愤怒是本能。", traits: ["愤世嫉俗", "吐槽达人", "高标准", "真性情"], dimensions: { "行动力": 50, "社交能量": 40, "情绪稳定": 30, "自我认同": 75 } },
+            DRUNK: { name: "酒鬼", emoji: "🍺", desc: "没有什么是一顿酒解决不了的。酒是粮食精，越喝越年轻。", traits: ["社交达人", "借酒消愁", "气氛组", "及时行乐"], dimensions: { "行动力": 60, "社交能量": 85, "情绪稳定": 40, "自我认同": 50 } },
+            SEXY: { name: "尤物", emoji: "💋", desc: "天生丽质难自弃，走到哪都是焦点。自信是你的代名词，魅力是你的超能力。", traits: ["自信", "魅力四射", "社交牛逼", "爱自己"], dimensions: { "行动力": 70, "社交能量": 90, "情绪稳定": 65, "自我认同": 85 } },
+            ATM: { name: "送钱者", emoji: "💸", desc: "总是为他人付出，钱包空空如也。朋友眼中的提款机，恋爱中的大冤种。", traits: ["付出型", "重情义", "容易被骗", "心软"], dimensions: { "行动力": 55, "社交能量": 75, "情绪稳定": 45, "自我认同": 40 } },
+            FOOL: { name: "傻乐者", emoji: "🤪", desc: "傻人有傻福，快乐就完事了。没心没肺，活着不累。", traits: ["乐观", "没心没肺", "简单快乐", "正能量"], dimensions: { "行动力": 65, "社交能量": 70, "情绪稳定": 85, "自我认同": 55 } },
+            LOVE: { name: "恋爱脑", emoji: "🥰", desc: "爱情至上，为爱痴狂。一谈恋爱就降智，分手就世界末日。", traits: ["浪漫", "专一", "粘人", "情绪化"], dimensions: { "行动力": 50, "社交能量": 80, "情绪稳定": 25, "自我认同": 45 } },
+            WORK: { name: "卷王", emoji: "📈", desc: "内卷之王，奋斗逼本逼。别人休息你加班，别人玩乐你学习。", traits: ["上进", "自律", "工作狂", "目标明确"], dimensions: { "行动力": 95, "社交能量": 40, "情绪稳定": 70, "自我认同": 80 } },
+            JOKER: { name: "小丑", emoji: "🤡", desc: "舔狗舔到最后一无所有，joker竟是我自己。深情总是被辜负。", traits: ["深情", "执着", "自我感动", "容易受伤"], dimensions: { "行动力": 45, "社交能量": 60, "情绪稳定": 35, "自我认同": 50 } },
+            BOSS: { name: "无所谓人", emoji: "😐", desc: "随便、都行、无所谓。人生座右铭：关我屁事，关你屁事。", traits: ["随和", "不计较", "低欲望", "佛系"], dimensions: { "行动力": 30, "社交能量": 35, "情绪稳定": 95, "自我认同": 60 } }
         };
         
         let currentQuestion = 0;
@@ -538,13 +382,10 @@
             const q = questions[currentQuestion];
             document.getElementById('questionCounter').textContent = `第 ${currentQuestion + 1} / ${questions.length} 题`;
             document.getElementById('questionText').textContent = q.q;
-            
-            const progress = ((currentQuestion + 1) / questions.length) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressFill').style.width = ((currentQuestion + 1) / questions.length * 100) + '%';
             
             const container = document.getElementById('optionsContainer');
             container.innerHTML = '';
-            
             q.options.forEach((opt, idx) => {
                 const btn = document.createElement('div');
                 btn.className = 'option';
@@ -557,7 +398,6 @@
         function selectOption(idx) {
             answers.push(idx);
             currentQuestion++;
-            
             if (currentQuestion < questions.length) {
                 showQuestion();
             } else {
@@ -566,29 +406,36 @@
         }
         
         function calculateResult() {
-            // 简化的计分逻辑
-            const scores = { ZZZZ: 0, MALO: 0, DEAD: 0, SHIT: 0, DRUNK: 0, SEXY: 0, ATM: 0, FOOL: 0, LOVE: 0, WORK: 0, JOKER: 0, BOSS: 0 };
+            const scores = {};
+            for (const type of Object.keys(typeMapping)) {
+                scores[type] = 0;
+            }
             
-            answers.forEach((ans, idx) => {
-                const q = questions[idx];
-                // 根据答案和题目类型给不同维度加分
-                if (idx % 3 === 0) scores.ZZZZ += (3 - ans);
-                if (idx % 4 === 0) scores.MALO += ans;
-                if (idx % 5 === 0) scores.DEAD += (3 - ans);
-                if (ans === 0) scores.SHIT += 1;
-                if (ans === 2 && idx > 20) scores.DRUNK += 1;
-                if (ans === 3 && idx < 10) scores.SEXY += 1;
-                if (ans === 0 && idx > 15) scores.ATM += 1;
-                if (ans === 3) scores.FOOL += 1;
-                if (idx > 25 && ans < 2) scores.LOVE += 1;
-                if (ans === 0 && idx > 5 && idx < 15) scores.WORK += 1;
-                if (idx > 20 && ans === 0) scores.JOKER += 1;
-                if (ans === 2) scores.BOSS += 1;
-            });
+            // 计算每个类型的匹配度
+            for (const [type, config] of Object.entries(typeMapping)) {
+                for (let i = 0; i < config.questions.length; i++) {
+                    const qIdx = config.questions[i];
+                    const expectedAns = config.answers[i];
+                    const weight = config.weights[i];
+                    
+                    if (answers[qIdx] === expectedAns) {
+                        scores[type] += weight;
+                    } else {
+                        // 部分匹配：答案接近也给一点分
+                        const diff = Math.abs(answers[qIdx] - expectedAns);
+                        if (diff === 1) scores[type] += weight * 0.3;
+                    }
+                }
+            }
+            
+            // 加上随机波动，让结果更有趣
+            for (const type of Object.keys(scores)) {
+                scores[type] += Math.random() * 2;
+            }
             
             // 找出最高分
-            let maxScore = 0;
-            let resultType = 'ZZZZ';
+            let maxScore = -1;
+            let resultType = 'FOOL';
             for (const [type, score] of Object.entries(scores)) {
                 if (score > maxScore) {
                     maxScore = score;
@@ -625,40 +472,22 @@
             for (const [dim, value] of Object.entries(result.dimensions)) {
                 const div = document.createElement('div');
                 div.className = 'dimension';
-                div.innerHTML = `
-                    <div class="dimension-label">
-                        <span>${dim}</span>
-                        <span>${value}%</span>
-                    </div>
-                    <div class="dimension-bar">
-                        <div class="dimension-fill" style="width: 0%"></div>
-                    </div>
-                `;
+                div.innerHTML = \`
+                    <div class="dimension-label"><span>\${dim}</span><span>\${value}%</span></div>
+                    <div class="dimension-bar"><div class="dimension-fill" style="width: 0%"></div></div>
+                \`;
                 dimensionsContainer.appendChild(div);
-                
-                // 动画
-                setTimeout(() => {
-                    div.querySelector('.dimension-fill').style.width = value + '%';
-                }, 100);
+                setTimeout(() => div.querySelector('.dimension-fill').style.width = value + '%', 100);
             }
         }
         
         function shareResult() {
-            const resultType = document.getElementById('resultTitle').textContent;
             const resultName = document.getElementById('resultType').textContent;
-            const text = `我的 SBTI 人格是【${resultName}】(${resultType})！快来测测你的吧~`;
-            
+            const text = \`我的 SBTI 人格是【\${resultName】！快来测测你的吧~\`;
             if (navigator.share) {
-                navigator.share({
-                    title: 'SBTI 性格测试',
-                    text: text,
-                    url: window.location.href
-                });
+                navigator.share({ title: 'SBTI 性格测试', text, url: window.location.href });
             } else {
-                // 复制到剪贴板
-                navigator.clipboard.writeText(text + ' ' + window.location.href).then(() => {
-                    alert('结果已复制到剪贴板！');
-                });
+                navigator.clipboard.writeText(text + ' ' + window.location.href).then(() => alert('结果已复制！'));
             }
         }
         
