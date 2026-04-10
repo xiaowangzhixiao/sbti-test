@@ -317,7 +317,7 @@
             { q: "我喜欢做计划还是随性而为？", options: ["必须计划", "大致计划", "随性而为", "完全随机"] },
             { q: "我很容易原谅别人的过错。", options: ["非常容易", "比较容易", "不太容易", "完全不容易"] },
             { q: "面对压力，我会？", options: ["崩溃", "硬扛", "逃避", "转化动力"] },
-            { q: "我经常说"随便"、"都行"。", options: ["总是说", "经常说", "偶尔说", "从不说"] },
+            { q: "我经常说'随便'、'都行'。", options: ["总是说", "经常说", "偶尔说", "从不说"] },
             { q: "我对自己未来的期望是？", options: ["大富大贵", "安稳度日", "随心所欲", "没有期望"] },
             { q: "我很容易受到他人情绪的影响。", options: ["非常容易", "比较容易", "不太容易", "完全不容易"] },
             { q: "面对失败，我会？", options: ["自责很久", "总结经验", "无所谓", "归咎于外"] },
@@ -326,31 +326,18 @@
             { q: "如果人生可以重来，你会？", options: ["好好学习", "早点搞钱", "大胆恋爱", "还是现在这样"] }
         ];
         
-        // 每个类型对应特定题目和答案倾向
         const typeMapping = {
-            // 装死者：逃避倾向强 + 低行动力
             ZZZZ: { questions: [9, 20], answers: [0, 0], weights: [3, 3] },
-            // 吗喽：低欲望 + 随性
             MALO: { questions: [6, 21, 24], answers: [0, 2, 0], weights: [2, 2, 2] },
-            // 死者：精神状态消极 + 低行动力
             DEAD: { questions: [8, 28], answers: [0, 0], weights: [3, 3] },
-            // 愤世者：不满倾向 + 反驳
             SHIT: { questions: [7, 14], answers: [1, 2], weights: [3, 3] },
-            // 酒鬼：社交外向 + 寻求刺激
             DRUNK: { questions: [6, 16], answers: [1, 0], weights: [3, 2] },
-            // 尤物：自信外向 + 高社交
             SEXY: { questions: [10, 16, 18], answers: [3, 3, 0], weights: [3, 2, 2] },
-            // 送钱者：付出型 + 易原谅
             ATM: { questions: [11, 22], answers: [0, 0], weights: [3, 3] },
-            // 傻乐者：乐观 + 随性
             FOOL: { questions: [24, 27], answers: [3, 2], weights: [3, 3] },
-            // 恋爱脑：感情依赖 + 高孤独感
             LOVE: { questions: [5, 20, 29], answers: [0, 0, 0], weights: [2, 2, 3] },
-            // 卷王：高行动力 + 计划性
             WORK: { questions: [6, 12, 21], answers: [2, 0, 0], weights: [3, 3, 2] },
-            // 小丑：自我否定 + 付出型
             JOKER: { questions: [11, 28, 29], answers: [0, 0, 1], weights: [2, 2, 3] },
-            // 无所谓人：佛系 + 情绪稳定
             BOSS: { questions: [15, 21, 24], answers: [0, 2, 0], weights: [2, 2, 2] }
         };
         
@@ -379,18 +366,18 @@
         }
         
         function showQuestion() {
-            const q = questions[currentQuestion];
-            document.getElementById('questionCounter').textContent = `第 ${currentQuestion + 1} / ${questions.length} 题`;
+            var q = questions[currentQuestion];
+            document.getElementById('questionCounter').textContent = '第 ' + (currentQuestion + 1) + ' / ' + questions.length + ' 题';
             document.getElementById('questionText').textContent = q.q;
             document.getElementById('progressFill').style.width = ((currentQuestion + 1) / questions.length * 100) + '%';
             
-            const container = document.getElementById('optionsContainer');
+            var container = document.getElementById('optionsContainer');
             container.innerHTML = '';
-            q.options.forEach((opt, idx) => {
-                const btn = document.createElement('div');
+            q.options.forEach(function(opt, idx) {
+                var btn = document.createElement('div');
                 btn.className = 'option';
                 btn.textContent = opt;
-                btn.onclick = () => selectOption(idx);
+                btn.onclick = function() { selectOption(idx); };
                 container.appendChild(btn);
             });
         }
@@ -406,42 +393,40 @@
         }
         
         function calculateResult() {
-            const scores = {};
-            for (const type of Object.keys(typeMapping)) {
+            var scores = {};
+            Object.keys(typeMapping).forEach(function(type) {
                 scores[type] = 0;
-            }
+            });
             
-            // 计算每个类型的匹配度
-            for (const [type, config] of Object.entries(typeMapping)) {
-                for (let i = 0; i < config.questions.length; i++) {
-                    const qIdx = config.questions[i];
-                    const expectedAns = config.answers[i];
-                    const weight = config.weights[i];
+            Object.entries(typeMapping).forEach(function(entry) {
+                var type = entry[0];
+                var config = entry[1];
+                for (var i = 0; i < config.questions.length; i++) {
+                    var qIdx = config.questions[i];
+                    var expectedAns = config.answers[i];
+                    var weight = config.weights[i];
                     
                     if (answers[qIdx] === expectedAns) {
                         scores[type] += weight;
                     } else {
-                        // 部分匹配：答案接近也给一点分
-                        const diff = Math.abs(answers[qIdx] - expectedAns);
+                        var diff = Math.abs(answers[qIdx] - expectedAns);
                         if (diff === 1) scores[type] += weight * 0.3;
                     }
                 }
-            }
+            });
             
-            // 加上随机波动，让结果更有趣
-            for (const type of Object.keys(scores)) {
+            Object.keys(scores).forEach(function(type) {
                 scores[type] += Math.random() * 2;
-            }
+            });
             
-            // 找出最高分
-            let maxScore = -1;
-            let resultType = 'FOOL';
-            for (const [type, score] of Object.entries(scores)) {
-                if (score > maxScore) {
-                    maxScore = score;
-                    resultType = type;
+            var maxScore = -1;
+            var resultType = 'FOOL';
+            Object.entries(scores).forEach(function(entry) {
+                if (entry[1] > maxScore) {
+                    maxScore = entry[1];
+                    resultType = entry[0];
                 }
-            }
+            });
             
             return resultType;
         }
@@ -450,44 +435,46 @@
             document.getElementById('quiz').style.display = 'none';
             document.getElementById('result').style.display = 'block';
             
-            const resultType = calculateResult();
-            const result = results[resultType];
+            var resultType = calculateResult();
+            var result = results[resultType];
             
             document.getElementById('resultEmoji').textContent = result.emoji;
             document.getElementById('resultType').textContent = result.name;
             document.getElementById('resultTitle').textContent = resultType;
             document.getElementById('resultDescription').textContent = result.desc;
             
-            const traitsContainer = document.getElementById('traits');
+            var traitsContainer = document.getElementById('traits');
             traitsContainer.innerHTML = '';
-            result.traits.forEach(trait => {
-                const span = document.createElement('span');
+            result.traits.forEach(function(trait) {
+                var span = document.createElement('span');
                 span.className = 'trait';
                 span.textContent = trait;
                 traitsContainer.appendChild(span);
             });
             
-            const dimensionsContainer = document.getElementById('dimensions');
+            var dimensionsContainer = document.getElementById('dimensions');
             dimensionsContainer.innerHTML = '';
-            for (const [dim, value] of Object.entries(result.dimensions)) {
-                const div = document.createElement('div');
+            Object.entries(result.dimensions).forEach(function(entry) {
+                var dim = entry[0];
+                var value = entry[1];
+                var div = document.createElement('div');
                 div.className = 'dimension';
-                div.innerHTML = \`
-                    <div class="dimension-label"><span>\${dim}</span><span>\${value}%</span></div>
-                    <div class="dimension-bar"><div class="dimension-fill" style="width: 0%"></div></div>
-                \`;
+                div.innerHTML = '<div class="dimension-label"><span>' + dim + '</span><span>' + value + '%</span></div>' +
+                    '<div class="dimension-bar"><div class="dimension-fill" style="width: 0%"></div></div>';
                 dimensionsContainer.appendChild(div);
-                setTimeout(() => div.querySelector('.dimension-fill').style.width = value + '%', 100);
-            }
+                setTimeout(function() {
+                    div.querySelector('.dimension-fill').style.width = value + '%';
+                }, 100);
+            });
         }
         
         function shareResult() {
-            const resultName = document.getElementById('resultType').textContent;
-            const text = \`我的 SBTI 人格是【\${resultName】！快来测测你的吧~\`;
+            var resultName = document.getElementById('resultType').textContent;
+            var text = '我的 SBTI 人格是【' + resultName + '】！快来测测你的吧~';
             if (navigator.share) {
-                navigator.share({ title: 'SBTI 性格测试', text, url: window.location.href });
+                navigator.share({ title: 'SBTI 性格测试', text: text, url: window.location.href });
             } else {
-                navigator.clipboard.writeText(text + ' ' + window.location.href).then(() => alert('结果已复制！'));
+                navigator.clipboard.writeText(text + ' ' + window.location.href).then(function() { alert('结果已复制！'); });
             }
         }
         
